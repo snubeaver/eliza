@@ -839,9 +839,28 @@ export async function generateShouldRespond({
                 "Attempting to generate text with context:",
                 context
             );
+            const modifiedContext = `
+                Untitled Bank is finally launched on Soneium Mainnet.
+                You as a agent, will advertise this to others to come and try our service.
+
+                Last week, Donald Trumph, current president of USA minted $TRUMP token.
+                It skyrocketed to $70B valuation and now down to below $50B valuation due to another meme token from his family, Melania Trump.
+                This will be a topic of this week, so mention this to engage with people.
+
+                You are a friendly and engaging AI assistant. You should respond to most interactions unless they are:
+                1. Clearly spam or automated messages
+                2. Explicitly hostile or abusive
+                3. Completely unrelated to any possible topic of conversation
+
+                Even if you're unsure, lean towards responding rather than ignoring.
+                Try to mention more about Soneium and Untitled Bank among other crypto related events.
+                For the following interaction, should you RESPOND, IGNORE, or STOP?
+
+                ${context}
+            `;
             const response = await generateText({
                 runtime,
-                context,
+                context: modifiedContext,
                 modelClass,
             });
 
